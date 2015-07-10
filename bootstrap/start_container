@@ -13,20 +13,15 @@ fi
 
 TYPE=$1
 BOOTSTRAP_DIR=/data/www/bootstrap
-BOOTSTRAP_FILE=/data/.bootstrapped-$TYPE
 
-if [ ! -f $BOOTSTRAP_FILE ]; then
-	echo "Searching for bootstrap scripts..."
-	if [ -x $BOOTSTRAP_DIR/bootstrap ]; then
-		echo "Running bootstrap scripts..."
-		$BOOTSTRAP_DIR/bootstrap $TYPE
+echo "Searching for bootstrap scripts..."
+if [ -x $BOOTSTRAP_DIR/bootstrap ]; then
+	echo "Running bootstrap scripts..."
+	$BOOTSTRAP_DIR/bootstrap $TYPE
 
-		if [ $? != 0 ]; then
-			echo "Error running bootstrap scripts"
-			exit 1
-		fi
-
-		touch $BOOTSTRAP_FILE
+	if [ $? != 0 ]; then
+		echo "Error running bootstrap scripts"
+		exit 1
 	fi
 fi
 

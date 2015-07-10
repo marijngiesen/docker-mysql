@@ -12,6 +12,7 @@ RUN yum -y install --setopt=tsflags=nodocs http://dl.fedoraproject.org/pub/epel/
 
 # Configure software
 RUN pip install pip --upgrade && pip install supervisor; \
+    rm -rf /tmp/*; \
     echo "NETWORKING=yes" > /etc/sysconfig/network; \
     mkdir -p /data/{bootstrap,db,log}; mkdir -p /etc/service-config
 
