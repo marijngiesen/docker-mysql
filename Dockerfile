@@ -2,7 +2,7 @@ FROM centos:6
 MAINTAINER Marijn Giesen <marijn@studio-donder.nl>
 
 # Install repositories, update system and install software
-RUN yum -y install --setopt=tsflags=nodocs http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm \ 
+RUN yum -y install --setopt=tsflags=nodocs http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm \
     http://rpms.famillecollet.com/enterprise/remi-release-6.rpm && \
     sed -i '5s/enabled=0/enabled=1/' /etc/yum.repos.d/remi.repo; \
     yum -y update --setopt=tsflags=nodocs; \
@@ -11,7 +11,7 @@ RUN yum -y install --setopt=tsflags=nodocs http://dl.fedoraproject.org/pub/epel/
     yum clean all
 
 # Configure software
-RUN pip install pip --upgrade && pip install supervisor; \
+RUN pip install pip --upgrade && pip install setuptools --upgrade && pip install supervisor; \
     rm -rf /tmp/*; \
     echo "NETWORKING=yes" > /etc/sysconfig/network; \
     mkdir -p /data/{bootstrap,db,log}; mkdir -p /etc/service-config
