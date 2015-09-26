@@ -20,7 +20,8 @@ COPY etc/service-config /etc/service-config
 COPY bootstrap/start_container /usr/bin/start_container
 
 RUN ln -sf /etc/service-config/supervisor/supervisord.conf /etc/supervisord.conf && \
-    ln -sf /etc/service-config/mysql/my.cnf /etc/my.cnf && \
+    ln -sf /etc/service-config/mysql/my.cnf /etc/my.cnf; \
+    ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime; \
     chmod 700 /usr/bin/start_container
 
 EXPOSE 3306
